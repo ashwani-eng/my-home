@@ -1,8 +1,16 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {Link, Outlet} from 'react-router-dom'
+import Panelvideo from './Panelvideo';
 
 
 function Panelist() {
+    const [videoVisible, setVideoVisible] = useState(true); // Initialize video visibility as true
+
+  // Function to handle toggling the video visibility
+  const toggleVideoVisibility = () => {
+    setVideoVisible(false);
+  };
+
   return (
     <div className="container-fluid">
     <div className="row flex-nowrap">
@@ -17,15 +25,15 @@ function Panelist() {
                             <i className="fs-4 bi-speedometer2"></i> <span className="ms-1 d-none d-sm-inline">Dashboard</span> </Link>
                     </li> */}
                     <li>
-                        <Link to="/panel/panelpro" className="nav-link px-0 align-middle text-white">
+                        <Link to="/panel/panelpro" className="nav-link px-0 align-middle text-white"onClick={toggleVideoVisibility}>
                             <i className="fs-4 bi-speedometer2"></i> <span className="ms-1 d-none d-sm-inline">Dashboard</span> </Link>
                     </li>
                     <li>
-                        <Link to="/panel/view" className="nav-link px-0 align-middle text-white">
+                        <Link to="/panel/view" className="nav-link px-0 align-middle text-white" onClick={toggleVideoVisibility}>
                             <i className="fs-4 bi-person"></i> <span className="ms-1 d-none d-sm-inline">View Ideas</span></Link>
                     </li>
                     <li onClick>
-                        <a href="#" className="nav-link px-0 align-middle text-white">
+                        <a href="#" className="nav-link px-0 align-middle text-white"onClick={toggleVideoVisibility}>
                             <i className="fs-4 bi-power"></i> <span className="ms-1 d-none d-sm-inline">Logout</span></a>
                     </li>
                 </ul>
@@ -34,6 +42,9 @@ function Panelist() {
         <div class="col p-0 m-0">
             <div className='p-2 d-flex justify-content-center shadow'>
                 <h4><b>Incedo</b></h4>			
+            </div>
+            <div>
+            {videoVisible &&<Panelvideo/>} 
             </div>
            
             <Outlet />
