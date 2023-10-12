@@ -8,15 +8,7 @@ import { Link } from "react-router-dom";
 
 const ThemeContext = createContext(null);
 function Navbar() {
-  var [date, setDate] = useState(new Date());
 
-  useEffect(() => {
-    var timer = setInterval(() => setDate(new Date()), 1000);
-    return function cleanup() {
-      clearInterval(timer);
-    };
-   
-  });
   return (
     <>
       <nav className="navbar bg-dark" data-bs-theme="dark">
