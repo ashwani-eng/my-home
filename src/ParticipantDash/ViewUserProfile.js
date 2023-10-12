@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect } from 'react'
 import {Link} from 'react-router-dom'
 import Neeraj from './Neeraj Chopra.jpeg'
+import Pic from './propic.jpg'
 import { useState } from 'react'
 import { Button, Card, CardBody, CardFooter, Col, Container, Row, Table } from 'reactstrap'
 const ViewUserProfile = ({ user, updateProfileClick }) => {
@@ -19,7 +20,7 @@ const ViewUserProfile = ({ user, updateProfileClick }) => {
                 <h3 className='text-uppercase'>user Information</h3>
 
                 <Container className='text-center'>
-                    <img style={{ maxWidth: '200px', maxHeight: '200px' }} src={Neeraj} alt="user profile picture" className='img-fluid  rounded' />
+                    <img style={{ maxWidth: '200px', maxHeight: '200px' }} src={Pic} alt="user profile picture" className='img-fluid  rounded' />
                 </Container>
                 <Table responsive striped hover bordered={true} className='text-center mt-5'>
                     <tbody>
@@ -36,7 +37,7 @@ const ViewUserProfile = ({ user, updateProfileClick }) => {
                                 NAME
                             </td>
                             <td>
-                                {'No-specific'}
+                                {'Anonymous'}
                             </td>
                         </tr>
                         <tr>
@@ -74,7 +75,7 @@ const ViewUserProfile = ({ user, updateProfileClick }) => {
 
                 {/* {currentUser ? (currentUser.id == user.id) ? ( */}
                     <CardFooter className='text-center'>
-                        <Link to="/update" className='btn btn-success'>Update Profile</Link>
+                        <Link to="/changepass" className='btn btn-success'>Update Profile</Link>
                         {/* <Button onClick={updateProfileClick} color='warning' >Update Profile</Button> */}
                     </CardFooter>
                 {/* ) : '' : ''} */}

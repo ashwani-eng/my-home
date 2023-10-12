@@ -14,23 +14,35 @@ export default function Login() {
 
   const navigate = useNavigate();
   var [response, setResponse] = useState();
-  // function handleRole(event) {
-  //   userdata.role = event.target.value;
-  //hi
+  // const [role, setRole] = useState("Participant");
+  // const handleRoleChange = (event) => {
+  //   setRole(event.target.value);
   // }
 
   const Loginn = () => {
-    const url = "localhost:8081/hackathon/users/admin/get";
+    const url = "http://localhost:8081/hackathon/users/login";
 
     axios
       .post(url, credentials)
       .then((result) => {
-        // const userObj = {
-        //   'user': json,
-        //   'role': role
-        // }
-        alert("U r logged in");
-        navigate("/signup");
+        const json = JSON.stringify(result);
+
+    // const userObj = {
+
+    //   'user': json,
+
+    //   'role': role
+
+    // }
+        console.log(result.data.role);
+        if(result.data.role === "Participant")
+        {
+          navigate("/partside");
+        }
+        else 
+        {
+          navigate("/panel");
+        }
       })
       .catch((error) => {
         console.error(error);

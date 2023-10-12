@@ -16,6 +16,7 @@ import ViewUserProfile from './ParticipantDash/ViewUserProfile';
 import AddEmployee from './ParticipantDash/AddEmployee';
 import UpdateProfile from './ParticipantDash/components/UpdateProfile'
 import PartSidebar from './ParticipantDash/components/PartSidebar'
+import Changepass from './ParticipantDash/Changepass';
 
 
 
@@ -36,6 +37,7 @@ function App() {
 <Route path="/partside" element={<PartSidebar/>}><Route path="/partside/Employee" element={<Employee/>}></Route>
     <Route path="/partside/profile" element={<ViewUserProfile/>}></Route>
     </Route>
+    <Route path='/changepass' element={<Changepass/>}></Route>
     <Route path="/create" element={<AddEmployee/>}></Route>
     <Route path="/update" element={<UpdateProfile/>}></Route>
  </Routes>

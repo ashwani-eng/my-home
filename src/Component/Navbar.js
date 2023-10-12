@@ -105,7 +105,7 @@ function Navbar() {
         <button
           type="button"
           className="btn btn-primary"
-          style={{ justifyContent: "flex-end" }}
+          style={{ justifyContent: "flex-end"}}
         >
           REGISTER NOW
         </button>

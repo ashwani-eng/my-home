@@ -1,21 +1,31 @@
 import "./Signup.css";
 import React from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useHistory } from "react-router-dom";
 import { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import ParticipantComponent from '../ParticipantDash/components/PartSidebar'
+import PanelistComponent from './Panelist'
+
 
 export default function Signup() {
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
   const [credentials, setcredentials] = useState({
     name: "",
     email: "",
-    password: "",
+    password: ""
   });
 
   const handleOnChange = (event) => {
     setcredentials({ ...credentials, [event.target.name]: event.target.value });
   };
+
+  const [role, setRole] = useState("Participant");
+  const handleRoleChange = (event) => {
+    setRole(event.target.value);
+  }
+
 
   const navigate = useNavigate();
   var [response, setResponse] = useState();
@@ -24,9 +34,8 @@ export default function Signup() {
   // function handleRole(event) {
   //   userdata.role = event.target.value;
   // }
-
   const Signup = () => {
-    const url = "localhost:8081/hackathon/users/register";
+    const url = "http://localhost:8081/hackathon/users/register";
     axios
       .post(url, credentials)
       .then((result) => {
@@ -41,7 +50,16 @@ export default function Signup() {
         navigate("/login");
       })
       .catch((error) => {
-        console.error(error);
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          console.log("Hi, erika");
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else {
+          // The request was made but no response was received (e.g., network error)
+          console.error(error.message);
+        }
       });
   };
 
@@ -103,21 +121,22 @@ export default function Signup() {
             />
           </div>
 
-          {/* <div className="form-group mt-3">
-              <label>Password</label>
-              <input
-               onChange={handlePassword}
-                type="password"
-                className="form-control mt-1"
-                placeholder="Password"
-              <select class="form-select" aria-label="Default select example">
+          <div className="form-group mt-3">
+            <label>Role</label>
+            <input
+              onChange={handleOnChange}
+              name="role"
+              type="role"
+              className="form-control mt-1"
+            />
+            <select class="form-select" aria-label="Default select example">
               <option selected>Select your Role</option>
               <option value="1">Participant</option>
               <option value="2">Team Member</option>
-             <option value="3">Panelist</option>
-             <option value="4">Judge</option>
-             </select>
-            </div> */}
+              <option value="3">Panelist</option>
+              <option value="4">Judge</option>
+            </select>
+          </div>
 
           <div className="d-grid gap-2 mt-3">
             {isloading == false && (

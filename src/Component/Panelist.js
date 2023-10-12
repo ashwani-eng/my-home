@@ -5,7 +5,6 @@ import Panelvideo from './Panelvideo';
 
 function Panelist() {
     const [videoVisible, setVideoVisible] = useState(true); // Initialize video visibility as true
-
   // Function to handle toggling the video visibility
   const toggleVideoVisibility = () => {
     setVideoVisible(false);
