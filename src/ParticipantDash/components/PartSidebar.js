@@ -1,6 +1,6 @@
 import React, {useEffect,useState} from 'react'
 // import 'bootstrap-icons/font/bootstrap-icons.css'
-import {Outlet, Link, useNavigate} from "react-router-dom";
+import {Outlet, Link, useLocation} from "react-router-dom";
 import Partvideo from './Participant';
 
 
@@ -10,11 +10,18 @@ import Employee from '../Employee';
 
 function PartSidebar() {
 	const [videoVisible, setVideoVisible] = useState(true); // Initialize video visibility as true
-
+    const location=useLocation();
 	// Function to handle toggling the video visibility
 	const toggleVideoVisibility = () => {
 	  setVideoVisible(false);
 	};
+	useEffect(() => {
+        if (location.pathname === '/partside') {
+          setVideoVisible(true);
+        } else {
+          setVideoVisible(false);
+        }
+      }, [location.pathname]);
   return (
     <div className="container-fluid">
 			<div className="row flex-nowrap">

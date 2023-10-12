@@ -1,15 +1,26 @@
-import React,{useState} from 'react'
-import {Link, Outlet} from 'react-router-dom'
+import React,{useState,useEffect} from 'react'
+import {Link, Outlet,useLocation} from 'react-router-dom'
 import Panelvideo from './Panelvideo';
 
 
 function Panelist() {
     const [videoVisible, setVideoVisible] = useState(true); // Initialize video visibility as true
+
+    const location=useLocation();
+
+
   // Function to handle toggling the video visibility
   const toggleVideoVisibility = () => {
     setVideoVisible(false);
-  };
-
+      };
+      useEffect(() => {
+        if (location.pathname === '/panel') {
+          setVideoVisible(true);
+        } else {
+          setVideoVisible(false);
+        }
+      }, [location.pathname]);
+  
   return (
     <div className="container-fluid">
     <div className="row flex-nowrap">

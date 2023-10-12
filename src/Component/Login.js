@@ -34,7 +34,7 @@ export default function Login() {
     //   'role': role
 
     // }
-        console.log(result.data.role);
+        console.log(result);
         if(result.data.role === "Participant")
         {
           navigate("/partside");

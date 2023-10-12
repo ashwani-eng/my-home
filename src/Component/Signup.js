@@ -14,17 +14,13 @@ export default function Signup() {
   const [credentials, setcredentials] = useState({
     name: "",
     email: "",
-    password: ""
+    password: "",
+    role: "Participant"
   });
 
   const handleOnChange = (event) => {
     setcredentials({ ...credentials, [event.target.name]: event.target.value });
   };
-
-  const [role, setRole] = useState("Participant");
-  const handleRoleChange = (event) => {
-    setRole(event.target.value);
-  }
 
 
   const navigate = useNavigate();
@@ -40,7 +36,7 @@ export default function Signup() {
       .post(url, credentials)
       .then((result) => {
         const json = JSON.stringify(result);
-
+        console.log(credentials.role);
         // const userObj = {
         //   'user': json,
         //   'role': role
@@ -83,6 +79,16 @@ export default function Signup() {
             </div>
           )}
 
+        <div className="form-group mt-3">
+          <label>Choose your role:</label>
+         <select name="role" value={credentials.role} onChange={handleOnChange}>
+        <option value="Participant">Participant</option>
+        <option value="Panelist">Panelist</option>
+        <option value="Judge">Judge</option>
+        <option value="Admin">Admin</option>
+      </select>
+          </div>
+
           <div className="form-group mt-3">
             <label>Full Name</label>
             <input
@@ -121,22 +127,7 @@ export default function Signup() {
             />
           </div>
 
-          <div className="form-group mt-3">
-            <label>Role</label>
-            <input
-              onChange={handleOnChange}
-              name="role"
-              type="role"
-              className="form-control mt-1"
-            />
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Select your Role</option>
-              <option value="1">Participant</option>
-              <option value="2">Team Member</option>
-              <option value="3">Panelist</option>
-              <option value="4">Judge</option>
-            </select>
-          </div>
+          
 
           <div className="d-grid gap-2 mt-3">
             {isloading == false && (
