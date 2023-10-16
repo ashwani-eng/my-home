@@ -14,6 +14,7 @@ const ViewUserProfile = ({ user, updateProfileClick }) => {
         // setCurrentUser(getCurrentUserDetail())
         // setLogin(isLoggedIn())
     }, [])
+    const userData = JSON.parse(localStorage.getItem('user'));
     return (
         <Card className='mt-2 border-0 rounded-0 shadow-sm'>
             <CardBody>
@@ -37,7 +38,7 @@ const ViewUserProfile = ({ user, updateProfileClick }) => {
                                 NAME
                             </td>
                             <td>
-                                {'Anonymous'}
+                                {userData.data.name}
                             </td>
                         </tr>
                         <tr>
@@ -45,15 +46,15 @@ const ViewUserProfile = ({ user, updateProfileClick }) => {
                              EMAIL
                             </td>
                             <td>
-                                {'user@gmail.com'}
+                                {userData.data.email}
                             </td>
                         </tr>
                         <tr>
                             <td >
-                                PHONE
+                                Idea Name
                             </td>
                             <td>
-                                98292892892
+                                N/A
                             </td>
 
                         </tr>
@@ -67,7 +68,7 @@ const ViewUserProfile = ({ user, updateProfileClick }) => {
                                         <div key={role.id}>{role.name}</div>
                                     )
                                 })} */}
-                                {'Web Developer'}
+                                {userData.data.role}
                             </td>
                         </tr>
                     </tbody>

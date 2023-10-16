@@ -75,7 +75,7 @@ const Panelprofile = ({ user, updateProfileClick }) => {
 
                 {/* {currentUser ? (currentUser.id == user.id) ? ( */}
                     <CardFooter className='text-center'>
-                        <Link to="/update" className='btn btn-success'>Update Profile</Link>
+                        <Link to="/changepass" className='btn btn-success'>Update Profile</Link>
                         {/* <Button onClick={updateProfileClick} color='warning' >Update Profile</Button> */}
                     </CardFooter>
                 {/* ) : '' : ''} */}

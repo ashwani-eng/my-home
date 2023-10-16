@@ -15,8 +15,6 @@ function Navbar() {
         <div className="container-fluid">
           <a className="navbar-brand">Incedo</a>
           <form className="d-flex" role="search">
-          <button type="button" className="btn btn-light mx-2"><Link to='/partside'>Participant</Link></button>
-            <button type="button" className="btn btn-light mx-2"><Link to='/panel'>Panelist</Link></button>
             <button type="button" className="btn btn-light mx-2">
               <Link to='/login'>Login</Link>
             </button>
@@ -107,7 +105,7 @@ function Navbar() {
           className="btn btn-primary"
           style={{ justifyContent: "flex-end"}}
         >
-          REGISTER NOW
+          <Link to="/signup" style={{color: "white"}}>REGISTER NOW</Link>
         </button>
       </div>
       </div>

@@ -13,39 +13,43 @@ function Sidebar() {
   return (
      <div className='d-flex '>
     <div className="p-2 style={{ flex : 1}}">
-    <div className="row flex-nowrap bg-dark">
+    <div className="row flex-nowrap ">
         <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0">
             <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                 <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                 <li>
                         <a href="/" data-bs-toggle="collapse" className="nav-link px-0 align-middle">
-                            <i className="fs-4 bi-speedometer2"></i> <span className="ms-1 d-none d-sm-inline text-white"><b>About</b></span> </a>
+                            <i className="fs-4 bi-speedometer2"></i> <span className="ms-1 d-none d-sm-inline text-dark"><b>About</b></span> </a>
                         <ul className="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                             <li className="w-100">
-                                <a href="#overview" className="nav-link px-0"> <span className="d-none d-sm-inline text-white" justifyContent='center' alignItems= 'center'>Overview</span></a>
+                                <a href="#overview" className="nav-link px-0"> <span className="d-none d-sm-inline text-dark" justifyContent='center' alignItems= 'center'>Overview</span></a>
                             </li>
                             <li>
                             <a href='#prize' className="nav-link px-0 align-middle">
                                 <i className="fs-4 bi-table"></i>
-                                <span className="ms-1 d-none d-sm-inline text-white">Prizes</span>
+                                <span className="ms-1 d-none d-sm-inline text-dark">Prizes</span>
                             </a>
                             </li>
                         </ul>
                     </li>
                     <li>
                         <a href='#rules' className="nav-link px-0 align-middle">
-                            <i className="fs-4 bi-table"></i> <span className="ms-1 d-none d-sm-inline text-white"><b>Rules</b></span></a>
+                            <i className="fs-4 bi-table"></i> <span className="ms-1 d-none d-sm-inline text-dark"><b>Rules</b></span></a>
                     </li>
                     <li>
                         <a href="#submission" className="nav-link px-0 align-middle ">
-                            <i className="fs-4 bi-bootstrap"></i> <span className="ms-1 d-none d-sm-inline text-white" style={{ whiteSpace: 'nowrap' }}><b>Submission Guideline</b></span></a>
+                            <i className="fs-4 bi-bootstrap"></i> <span className="ms-1 d-none d-sm-inline text-dark" style={{ whiteSpace: 'nowrap' }}><b>Submission Guideline</b></span></a>
     
                     </li>
                 
                     <li>
                         <a href="#incedo" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline text-white" style={{ whiteSpace: 'nowrap' }}><b>About Incedo</b></span> </a>
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline text-dark" style={{ whiteSpace: 'nowrap' }}><b>About Incedo</b></span> </a>
                     </li>
+                    {/* <li>
+                        <a href="#incedo" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline text-dark" style={{ whiteSpace: 'nowrap' }}><b>Contact us</b></span> </a>
+                    </li> */}
                 </ul>
                 <hr/>
                 

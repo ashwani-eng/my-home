@@ -1,6 +1,6 @@
 import React, {useEffect,useState} from 'react'
 // import 'bootstrap-icons/font/bootstrap-icons.css'
-import {Outlet, Link, useLocation} from "react-router-dom";
+import {Outlet, Link, useLocation, useNavigate} from "react-router-dom";
 import Partvideo from './Participant';
 
 
@@ -12,6 +12,7 @@ function PartSidebar() {
 	const [videoVisible, setVideoVisible] = useState(true); // Initialize video visibility as true
     const location=useLocation();
 	// Function to handle toggling the video visibility
+	const navigate = useNavigate();
 	const toggleVideoVisibility = () => {
 	  setVideoVisible(false);
 	};
@@ -22,6 +23,10 @@ function PartSidebar() {
           setVideoVisible(false);
         }
       }, [location.pathname]);
+	  const handleLogout = () =>{
+		localStorage.removeItem('user');
+		navigate('/');
+	  }
   return (
     <div className="container-fluid">
 			<div className="row flex-nowrap">
@@ -43,8 +48,8 @@ function PartSidebar() {
 								<Link to="/partside/Employee" className="nav-link px-0 align-middle text-white"onClick={toggleVideoVisibility}>
 									<i className="fs-4 bi-person"></i> <span className="ms-1 d-none d-sm-inline">Submissions</span></Link>
 							</li>
-							<li onClick>
-								<a href="#" className="nav-link px-0 align-middle text-white"onClick={toggleVideoVisibility}>
+							<li>
+								<a href="#" className="nav-link px-0 align-middle text-white"onClick={handleLogout}>
 									<i className="fs-4 bi-power"></i> <span className="ms-1 d-none d-sm-inline">Logout</span></a>
 							</li>
 						</ul>

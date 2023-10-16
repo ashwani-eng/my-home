@@ -26,6 +26,7 @@ export default function Login() {
       .post(url, credentials)
       .then((result) => {
         const json = JSON.stringify(result);
+        localStorage.setItem('user', json); //storing at user browser
 
     // const userObj = {
 
@@ -38,6 +39,10 @@ export default function Login() {
         if(result.data.role === "Participant")
         {
           navigate("/partside");
+        }
+        else if(result.data.role === "Judge")
+        {
+          navigate("/Judgeside");
         }
         else 
         {

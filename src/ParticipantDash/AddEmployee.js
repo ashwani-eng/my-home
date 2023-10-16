@@ -1,29 +1,45 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 function AddEmployee() {
   const [data, setData] = useState({
     ideaName: '',
-    emails: '', // Change to store comma-separated email addresses
-    password: '',
+    //emails: '',  Change to store comma-separated email addresses
     description: '',
   });
 
   const navigate = useNavigate();
+  const [emailList, setEmailList] = useState([{ service: "" }]);
+
+  const handleServiceChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...emailList];
+    list[index][name] = value;
+    setEmailList(list);
+  };
+
+  const handleServiceRemove = (index) => {
+    const list = [...emailList];
+    list.splice(index, 1);
+    setEmailList(list);
+  };
+
+  const handleServiceAdd = () => {
+    setEmailList([...emailList, { service: "" }]);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const formdata = new FormData();
     formdata.append('ideaName', data.ideaName);
-    formdata.append('emails', data.emails); // Update to store emails
-    formdata.append('password', data.password);
+    formdata.append('email', data.email); // Update to store emails
     formdata.append('description', data.description);
 
     axios
-      .post('http://localhost:8081/create', formdata)
+      .post('http://localhost:8081/hackathon/ideas/{useId}/add', formdata)
       .then((res) => {
-        navigate('/employee');
+        //navigate('/employee');
       })
       .catch((err) => console.log(err));
   };
@@ -45,7 +61,7 @@ function AddEmployee() {
             onChange={(e) => setData({ ...data, ideaName: e.target.value })}
           />
         </div>
-        <div className='col-12'>
+        {/* <div className='col-12'>
           <label htmlFor='inputEmails' className='form-label'>
             Email Addresses (comma-separated)
           </label>
@@ -56,20 +72,54 @@ function AddEmployee() {
             placeholder='abc@gmail.com, def@example.com'
             autoComplete='off'
             onChange={(e) => setData({ ...data, emails: e.target.value })}
+            multiline
           />
-        </div>
-        <div className='col-12'>
-          <label htmlFor='inputPassword' className='form-label'>
-            Password
-          </label>
-          <input
-            type='password'
-            className='form-control'
-            id='inputPassword'
-            placeholder='Enter Password'
-            onChange={(e) => setData({ ...data, password: e.target.value })}
-          />
-        </div>
+        </div> */}
+        {/* <div className="form-field">
+        <label htmlFor="email">Email (Add Team Members)</label>
+        {emailList.map((singleEmail, index) => (
+          <div key={index} className="services">
+            <div className="first-division">
+              <input
+                name="service"
+                type="text"
+                id="service"
+                value={singleEmail.service}
+                onChange={(e) => handleServiceChange(e, index)}
+                required
+              />
+              {emailList.length - 1 === index && emailList.length < 4 && (
+                <button
+                  type="button"
+                  onClick={handleServiceAdd}
+                  className="add-btn"
+                >
+                  <span>Add</span>
+                </button>
+              )}
+            </div>
+            <div className="second-division">
+              {emailList.length !== 1 && (
+                <button
+                  type="button"
+                  onClick={() => handleServiceRemove(index)}
+                  className="remove-btn"
+                >
+                  <span>Remove</span>
+                </button>
+              )}
+            </div>
+          </div>
+        ))}
+      </div> */}
+      {/* <div className="output">
+        {emailList &&
+          emailList.map((singleEmail, index) => (
+            <ul key={index}>
+              {singleEmail.service && <li>{singleEmail.service}</li>}
+            </ul>
+          ))}
+      </div> */}
         <div className='col-12'>
           <label htmlFor='inputDescription' className='form-label'>
             Description
@@ -95,7 +145,16 @@ function AddEmployee() {
             Submit
           </button>
         </div>
+        <div className='col-12'  style={{ display: 'flex',justifyContent: 'center'}}>
+          <button type='submit' className='btn btn-primary'>
+          <Link to='/addteam' style={{color: "white"}}>Add new member</Link>
+          </button>
+          <button type='submit' className='btn btn-primary mx-2' >
+            <Link to='/partside/Employee' style={{color: "white"}}>Home</Link>
+          </button>
+        </div>
       </form>
+      
     </div>
   );
 }

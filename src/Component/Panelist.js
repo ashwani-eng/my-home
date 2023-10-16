@@ -47,6 +47,9 @@ function Panelist() {
                             <i className="fs-4 bi-power"></i> <span className="ms-1 d-none d-sm-inline">Logout</span></a>
                     </li>
                 </ul>
+                <div className="bottom-text">
+        <p><Link to="/" style={{ color: 'white' }}>Back</Link></p>
+      </div>
             </div>
         </div>
         <div class="col p-0 m-0">
